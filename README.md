@@ -13,8 +13,9 @@ Site para celular com a votação para **deputado federal** em Igarassu (PE), 85
 | Ricardo Teobaldo | PODE · 2055 | 4.019 | 3º |
 | Jones Manoel | PSOL · 5050 | 3.335 | 4º |
 | Daniel Coelho | PSD · 5555 | 1.978 | 8º |
+| Augusto Coutinho | REPUBLICANOS · 1000 | 839 | 20º |
 
-Os quatro mais votados no município e Daniel Coelho, incluído por escolha no lugar do 5º colocado (Marcelo Gouveia, PODE, 2.981 votos).
+Os quatro mais votados no município e dois nomes incluídos por escolha: Daniel Coelho, no lugar do 5º colocado (Marcelo Gouveia, PODE, 2.981 votos), e Augusto Coutinho.
 
 ## Fontes
 
@@ -22,3 +23,5 @@ Os quatro mais votados no município e Daniel Coelho, incluído por escolha no l
 - Tribunal Superior Eleitoral, Portal de Dados Abertos: Eleitorado 2026, eleitorado por local de votação — https://dadosabertos.tse.jus.br/dataset/eleitorado-2026
 
 A soma das seções coincide com o total oficial de cada candidato no município. Os percentuais usam os votos válidos registrados nos boletins (64.802); a totalização oficial registra 64.769 porque exclui 33 votos de candidatos com registro sub judice. São dados de divulgação: para uso em processo, utilize os boletins de urna ou o arquivo oficial de votação por seção.
+
+Mapa: © colaboradores do [OpenStreetMap](https://www.openstreetmap.org/copyright), exibido com [Leaflet](https://leafletjs.com).
