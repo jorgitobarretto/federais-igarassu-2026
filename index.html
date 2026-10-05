@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f4f5f0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#10110e" media="(prefers-color-scheme: dark)">
+<meta name="description" content="Votação de Guilherme Uchoa Junior, Lula da Fonte, Ricardo Teobaldo, Jones Manoel e Daniel Coelho para deputado federal em Igarassu (PE), por bairro, escola e seção, eleições 2026. Dados dos boletins de urna do TSE.">
+<meta property="og:title" content="Federais em Igarassu 2026">
+<meta property="og:description" content="Votos para deputado federal em Igarassu (PE) por bairro, escola e seção, eleições 2026.">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Federais em Igarassu 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: app de uma coluna para o polegar — barra de candidatos no topo, abas fixas no rodapé, uma vista por vez */
+:root{
+  --bg:#f4f5f0; --surface:#fcfcfb; --surface-2:#eef0e8;
+  --ink:#141611; --ink-2:#4d5047; --muted:#7a7d73; --grid:#e3e4dc; --axis:#c3c5b9; --border:rgba(20,22,17,.11);
+  --accent:#536e20; --accent-ink:#ffffff; --accent-wash:rgba(83,110,32,.10);
+  --c1:#2a78d6; --c2:#eb6834; --c3:#1baf7a; --c4:#eda100; --c5:#e87ba4; --tie:#a3a59a;
+  --font-display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body:"Public Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --nav-h:62px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#10110e; --surface:#1a1a19; --surface-2:#232420;
+    --ink:#f6f6f2; --ink-2:#c3c2b7; --muted:#8d8f85; --grid:#2c2c2a; --axis:#3d3e39; --border:rgba(255,255,255,.10);
+    --accent:#a6c45c; --accent-ink:#10110e; --accent-wash:rgba(166,196,92,.14);
+    --c1:#3987e5; --c2:#d95926; --c3:#199e70; --c4:#c98500; --c5:#d55181; --tie:#6c6e66; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10110e; --surface:#1a1a19; --surface-2:#232420;
+  --ink:#f6f6f2; --ink-2:#c3c2b7; --muted:#8d8f85; --grid:#2c2c2a; --axis:#3d3e39; --border:rgba(255,255,255,.10);
+  --accent:#a6c45c; --accent-ink:#10110e; --accent-wash:rgba(166,196,92,.14);
+  --c1:#3987e5; --c2:#d95926; --c3:#199e70; --c4:#c98500; --c5:#d55181; --tie:#6c6e66; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:15px;line-height:1.5;-webkit-tap-highlight-color:transparent}
+button{font:inherit}
+.shell{max-width:620px;margin:0 auto;position:relative;padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom,0px) + 24px)}
+
+/* topo */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:1px solid var(--border)}
+.top-in{padding-inline:16px;padding-block:12px 10px;display:flex;flex-direction:column;gap:8px}
+.brand{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.brand h1{margin:0;font-family:var(--font-display);font-weight:700;font-size:22px;letter-spacing:-.01em;line-height:1.1}
+.brand span{font-size:12px;color:var(--muted);white-space:nowrap}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-inline:-16px;padding-inline:16px;scroll-snap-type:x proximity}
+.chips::-webkit-scrollbar{display:none}
+.chip-c{all:unset;box-sizing:border-box;cursor:pointer;flex:none;scroll-snap-align:start;display:flex;align-items:center;gap:8px;padding:7px 12px 7px 10px;border-radius:999px;border:1px solid var(--border);background:var(--surface);font-size:13.5px;font-weight:600;color:var(--ink-2);min-height:40px}
+.chip-c .d{width:10px;height:10px;border-radius:50%;flex:none}
+.chip-c[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip-c[aria-pressed="true"] .d{box-shadow:0 0 0 2px var(--ink),0 0 0 3px var(--bg)}
+.chip-c:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* vistas */
+main{padding-inline:16px;padding-block:16px 8px}
+.view{display:flex;flex-direction:column;gap:14px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 14px}
+h2{margin:0;font-family:var(--font-display);font-weight:600;font-size:19px;text-wrap:balance}
+h3{margin:0;font-size:14px;font-weight:600;color:var(--ink-2)}
+.sub{font-size:13px;color:var(--muted)}
+.eyebrow{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+p{margin:0}
+.lead{font-size:14px;color:var(--ink-2)}
+
+/* destaque do candidato */
+.hero{display:flex;flex-direction:column;gap:6px}
+.hero .who{display:flex;align-items:center;gap:10px}
+.hero .who .d{width:14px;height:14px;border-radius:50%}
+.hero .name{font-size:18px;font-weight:700}
+.hero .party{font-size:13px;color:var(--muted);margin-left:auto;white-space:nowrap}
+.hero .big{font-size:44px;font-weight:700;line-height:1.05}
+.hero .big small{font-size:15px;font-weight:600;color:var(--ink-2);margin-left:6px}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:6px}
+.fact{background:var(--surface-2);border-radius:10px;padding:8px 10px;min-width:0}
+.fact b{display:block;font-size:16px;font-weight:700}
+.fact span{font-size:11.5px;color:var(--ink-2);line-height:1.3;display:block}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;border:1px solid var(--border);border-radius:999px;padding:2px 9px;color:var(--ink-2);background:var(--surface-2);white-space:nowrap}
+
+/* ranking */
+.rank{display:flex;flex-direction:column;gap:12px;margin-top:4px}
+.rrow{all:unset;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;align-items:center}
+.rrow:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:6px}
+.rrow .nm{display:flex;align-items:center;gap:8px;font-weight:600;font-size:14px;min-width:0}
+.rrow .nm i{width:10px;height:10px;border-radius:50%;flex:none}
+.rrow .nm em{font-style:normal;color:var(--muted);font-weight:500;font-size:12.5px;white-space:nowrap}
+.rrow .val{font-weight:700;font-size:14px;text-align:right;font-variant-numeric:tabular-nums}
+.rrow .val small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.track{grid-column:1 / -1;height:10px;background:var(--surface-2);border-radius:999px;overflow:hidden}
+.track span{display:block;height:100%;border-radius:999px}
+.rrow.dim{opacity:.55}
+
+/* faixa de liderança */
+.strip{display:flex;gap:2px;height:20px;margin-top:8px}
+.strip span{height:100%;min-width:3px}
+.strip span:first-child{border-radius:4px 0 0 4px}
+.strip span:last-child{border-radius:0 4px 4px 0}
+.leg{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:8px;font-size:12.5px;color:var(--ink-2)}
+.leg span{display:inline-flex;align-items:center;gap:6px}
+.leg i{width:9px;height:9px;border-radius:2px;display:inline-block}
+.leg b{color:var(--ink);font-variant-numeric:tabular-nums}
+
+details.more{border-top:1px solid var(--grid);padding-top:10px;margin-top:4px}
+details.more summary{cursor:pointer;font-weight:600;font-size:13.5px;color:var(--accent);list-style:none}
+details.more summary::-webkit-details-marker{display:none}
+ol.top10{margin:10px 0 0;padding-left:22px;display:flex;flex-direction:column;gap:4px;font-size:13.5px}
+ol.top10 li span{float:right;font-variant-numeric:tabular-nums;color:var(--ink-2)}
+ol.top10 li.sel{font-weight:700}
+
+/* mapa */
+.seg{display:inline-flex;gap:2px;background:var(--surface-2);border-radius:9px;padding:3px}
+.seg button{all:unset;cursor:pointer;font-size:13px;font-weight:600;padding:7px 12px;border-radius:7px;color:var(--ink-2)}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 0 0 1px var(--border)}
+.seg button:focus-visible{outline:2px solid var(--accent)}
+.map svg{display:block;width:100%;height:auto;touch-action:manipulation}
+.bubble{cursor:pointer}
+.bubble.sel .ring{stroke:var(--ink);stroke-width:3}
+.bubble:focus{outline:none}
+.bubble:focus-visible .ring{stroke:var(--ink);stroke-width:3}
+.detail{display:flex;flex-direction:column;gap:8px}
+.detail .hd{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.detail .hd b{font-size:15px}
+.mini{display:flex;flex-direction:column;gap:6px}
+.mrow{display:grid;grid-template-columns:minmax(0,1fr) 56px 64px;gap:8px;align-items:center;font-size:13px}
+.mrow .n{display:flex;align-items:center;gap:7px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mrow .n i{width:9px;height:9px;border-radius:50%;flex:none}
+.mrow .v{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.mrow .p{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+.mrow.on .n{font-weight:700}
+.btn{all:unset;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:13.5px;font-weight:600;color:var(--accent-ink);background:var(--accent);border-radius:9px;padding:9px 14px;min-height:40px;box-sizing:border-box}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--border)}
+
+/* listas */
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tools > *{flex:1 1 150px;min-width:0}
+select,input[type="search"]{font:inherit;font-size:15px;color:var(--ink);background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:9px 11px;min-height:42px;width:100%}
+select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.list{display:flex;flex-direction:column;gap:8px}
+.item{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.item > button{all:unset;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;padding:12px 14px;width:100%;box-sizing:border-box;align-items:center}
+.item > button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.item .t{font-weight:600;font-size:14.5px;min-width:0}
+.item .s{font-size:12.5px;color:var(--muted);grid-column:1}
+.item .r{grid-row:1 / span 2;grid-column:2;text-align:right;font-variant-numeric:tabular-nums}
+.item .r b{display:block;font-size:17px;font-weight:700}
+.item .r span{font-size:12px;color:var(--muted)}
+.item .bar{grid-column:1 / -1;height:6px;background:var(--surface-2);border-radius:999px;overflow:hidden;margin-top:6px}
+.item .bar span{display:block;height:100%;border-radius:999px}
+.item .body{padding:0 14px 14px;display:flex;flex-direction:column;gap:10px}
+.lead-chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--ink-2)}
+.lead-chip i{width:8px;height:8px;border-radius:50%}
+.count{font-size:12.5px;color:var(--muted)}
+.empty{padding:16px;color:var(--muted);font-size:14px;text-align:center}
+.notes{font-size:12.5px;color:var(--ink-2);display:flex;flex-direction:column;gap:6px}
+.notes a{color:var(--accent)}
+
+/* abas no rodapé */
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--surface);border-top:1px solid var(--border);padding-bottom:env(safe-area-inset-bottom,0px)}
+nav.tabs .in{max-width:620px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);height:var(--nav-h)}
+nav.tabs button{all:unset;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11.5px;font-weight:600;color:var(--muted)}
+nav.tabs button svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+nav.tabs button[aria-current="page"]{color:var(--accent)}
+nav.tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:-4px;border-radius:10px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="top">
+    <div class="top-in">
+      <div class="brand"><h1>Federais em Igarassu</h1><span>Eleições 2026 · 1º turno</span></div>
+      <div class="chips" id="chips" role="group" aria-label="Escolha o candidato"></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="view" id="v-resumo" aria-label="Resumo">
+      <div class="card hero" id="hero"></div>
+      <div class="card">
+        <h2>Os cinco em Igarassu</h2>
+        <p class="sub">Votos para deputado federal no município · toque para escolher</p>
+        <div class="rank" id="rank"></div>
+        <details class="more">
+          <summary>Ver os 10 mais votados em Igarassu</summary>
+          <ol class="top10" id="top10"></ol>
+          <p class="sub" style="margin-top:8px">Marcelo Gouveia (5º no município) deu lugar a Daniel Coelho (8º), que foi incluído na análise por escolha.</p>
+        </details>
+      </div>
+      <div class="card">
+        <h3>Mais votado entre os cinco, por seção</h3>
+        <div class="strip" id="stripSec"></div><div class="leg" id="legSec"></div>
+      </div>
+      <div class="card">
+        <h3>Mais votado entre os cinco, por local de votação</h3>
+        <div class="strip" id="stripLoc"></div><div class="leg" id="legLoc"></div>
+      </div>
+      <div class="card notes">
+        <h3>Sobre os dados</h3>
+        <p>Votos lidos nos boletins de urna das 248 seções de Igarassu (85ª Zona Eleitoral), no Portal de Resultados do TSE, em 5 de outubro de 2026. A soma das seções bate com o total oficial de cada candidato no município. Nomes, bairros e coordenadas das escolas vêm do cadastro de locais de votação do TSE.</p>
+        <p>Percentuais sobre os votos válidos dos boletins (64.802). A totalização oficial registra 64.769 porque exclui 33 votos de candidatos com registro sub judice. A seção 0354 está agregada à 0306.</p>
+        <p><a href="https://resultados.tse.jus.br/oficial/app/index.html" target="_blank" rel="noopener">TSE · Portal de Resultados</a> · <a href="https://dadosabertos.tse.jus.br/dataset/eleitorado-2026" target="_blank" rel="noopener">TSE · Dados Abertos</a></p>
+      </div>
+    </section>
+
+    <section class="view" id="v-mapa" aria-label="Mapa" hidden>
+      <div class="card" style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+          <div><h2>Onde vieram os votos</h2><p class="sub" id="mapSub"></p></div>
+          <div class="seg" role="group" aria-label="Enquadramento">
+            <button type="button" id="vUrb" aria-pressed="true">Cidade</button>
+            <button type="button" id="vAll" aria-pressed="false">Município</button>
+          </div>
+        </div>
+        <div class="map" id="map"></div>
+        <p class="sub">Cada círculo é uma escola. A área é proporcional aos votos do candidato escolhido. Sem ruas ao fundo; posições pelas coordenadas do TSE.</p>
+      </div>
+      <div class="card detail" id="mapDetail"></div>
+    </section>
+
+    <section class="view" id="v-bairros" aria-label="Bairros" hidden>
+      <div><h2>Por bairro</h2><p class="sub" id="bSub"></p></div>
+      <div class="list" id="bList"></div>
+    </section>
+
+    <section class="view" id="v-locais" aria-label="Locais" hidden>
+      <div><h2>Por local de votação</h2><p class="sub">41 escolas · toque para ver os cinco e abrir as seções</p></div>
+      <div class="tools">
+        <label for="lSort" class="sr"><select id="lSort" aria-label="Ordenar">
+          <option value="v">Mais votos</option>
+          <option value="p">Maior %</option>
+          <option value="n">Nome</option>
+        </select></label>
+        <label for="lBairro"><select id="lBairro" aria-label="Bairro"><option value="">Todos os bairros</option></select></label>
+      </div>
+      <div class="list" id="lList"></div>
+    </section>
+
+    <section class="view" id="v-secoes" aria-label="Seções" hidden>
+      <div><h2>Por seção</h2><p class="sub">248 seções · toque em uma para ver os cinco</p></div>
+      <div class="tools">
+        <label for="sLocal"><select id="sLocal" aria-label="Local de votação"><option value="">Todas as escolas</option></select></label>
+        <label for="sQ"><input type="search" id="sQ" placeholder="Número da seção" inputmode="numeric" aria-label="Buscar seção"></label>
+      </div>
+      <p class="count" id="sCount"></p>
+      <div class="list" id="sList"></div>
+    </section>
+  </main>
+
+  <nav class="tabs" aria-label="Navegação">
+    <div class="in" id="tabs">
+      <button type="button" data-v="resumo"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Resumo</button>
+      <button type="button" data-v="mapa"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Mapa</button>
+      <button type="button" data-v="bairros"><svg viewBox="0 0 24 24"><path d="M3 21V9l6-4 6 4v12M15 21V12h6v9M3 21h18M7 13h4M7 17h4"/></svg>Bairros</button>
+      <button type="button" data-v="locais"><svg viewBox="0 0 24 24"><path d="M3 10l9-6 9 6M5 10v10h14V10M10 20v-5h4v5"/></svg>Escolas</button>
+      <button type="button" data-v="secoes"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>Seções</button>
+    </div>
+  </nav>
+</div>
+
+<script>
+const DATA = {"secoes":[["0001","1066",333,290,51,14,22,16,17],["0002","1066",315,266,46,24,15,8,10],["0003","1066",309,276,57,12,18,12,5],["0004","1066",329,275,51,23,18,6,8],["0005","1023",320,286,60,27,14,21,12],["0006","1023",313,277,54,20,13,21,7],["0007","1163",328,279,43,21,10,23,11],["0008","1163",330,286,54,19,11,17,9],["0009","1163",311,265,69,15,17,15,10],["0010","1163",296,252,61,18,14,19,12],["0011","1155",327,292,47,21,14,13,10],["0012","1155",318,279,54,21,21,11,9],["0013","1040",271,244,47,19,4,17,12],["0014","1040",268,234,38,22,12,16,14],["0015","1520",318,276,73,19,5,11,11],["0016","1520",314,275,48,16,10,6,26],["0017","1520",313,282,61,13,7,13,30],["0018","1520",315,286,54,20,10,12,21],["0019","1066",324,277,48,22,18,19,10],["0020","1066",322,278,41,23,10,13,13],["0021","1066",321,263,44,30,19,11,7],["0022","1066",322,272,41,20,16,10,14],["0023","1066",313,274,46,21,13,18,9],["0024","1066",317,270,49,23,20,9,10],["0025","1066",321,294,50,22,17,13,8],["0026","1066",312,275,43,21,17,9,10],["0027","1074",264,230,41,20,11,3,7],["0028","1074",260,224,45,20,8,3,4],["0029","1082",311,271,49,15,8,10,17],["0030","1082",311,263,33,18,7,10,10],["0031","1082",313,258,50,18,12,20,3],["0032","1082",313,273,59,12,11,10,12],["0033","1082",324,268,54,22,12,13,12],["0034","1694",220,193,33,10,6,13,3],["0035","1694",214,181,41,13,14,8,1],["0036","1694",215,183,31,12,19,5,4],["0037","1694",219,180,34,13,10,5,7],["0038","1082",313,264,48,17,15,12,10],["0039","1090",321,288,55,21,15,11,16],["0040","1163",316,270,64,22,15,9,12],["0041","1082",308,259,54,22,15,11,15],["0042","1040",252,218,35,20,5,8,5],["0043","1040",259,235,38,16,10,17,13],["0044","1040",278,243,42,22,12,15,6],["0045","1163",343,292,57,25,13,15,7],["0046","1163",319,263,56,19,5,19,6],["0047","1082",323,280,49,19,9,8,15],["0048","1198",320,267,38,22,12,12,9],["0049","1198",327,301,41,28,17,17,12],["0050","1198",315,278,41,25,14,13,3],["0051","1228",321,273,37,26,12,13,1],["0052","1228",323,277,36,24,10,14,11],["0053","1228",312,258,28,18,21,22,6],["0054","1228",338,286,37,29,16,13,7],["0055","1244",333,290,53,34,14,22,6],["0056","1244",318,275,37,21,12,17,11],["0057","1210",326,283,40,24,11,18,2],["0058","1210",326,267,37,20,11,22,3],["0059","1210",319,277,43,25,21,18,7],["0060","1210",333,282,40,21,9,14,7],["0061","1210",328,287,51,21,16,13,5],["0062","1210",323,286,38,22,11,19,5],["0063","1228",330,287,37,29,16,7,3],["0064","1228",325,266,38,22,10,10,12],["0065","1228",309,266,32,17,12,16,9],["0066","1228",326,280,30,32,12,14,6],["0067","1228",323,276,37,17,19,15,9],["0068","1236",323,278,25,27,9,17,12],["0069","1236",323,293,32,38,15,13,13],["0070","1236",335,295,50,22,17,20,7],["0071","1236",318,282,40,22,19,18,16],["0072","1236",321,286,41,33,16,20,10],["0073","1244",321,277,36,28,18,16,8],["0074","1244",328,295,26,15,17,18,5],["0075","1244",325,275,32,29,16,13,8],["0076","1244",323,276,23,28,16,16,8],["0077","1244",325,297,45,27,9,16,8],["0078","1244",314,273,37,28,26,23,11],["0079","1252",287,250,29,21,10,18,6],["0080","1449",303,272,40,38,10,10,14],["0081","1260",323,279,42,18,14,15,5],["0082","1260",312,273,49,14,11,19,8],["0083","1244",346,300,33,22,18,11,6],["0084","1309",166,153,23,12,22,3,1],["0085","1309",161,149,21,6,18,3,1],["0086","1309",161,138,26,9,29,3,2],["0087","1309",171,158,33,18,20,4,1],["0088","1309",165,143,22,6,28,3,2],["0089","1333",276,249,102,31,19,2,9],["0090","1333",279,264,108,25,27,6,1],["0091","1368",278,230,37,25,9,5,10],["0092","1350",165,145,36,14,3,3,9],["0093","1368",278,220,45,19,6,4,12],["0094","1350",173,139,35,12,2,0,9],["0156","1244",341,310,31,25,17,19,9],["0157","1066",332,286,55,18,13,11,8],["0158","1694",215,184,29,16,13,6,4],["0159","1163",323,273,46,25,8,14,8],["0160","1449",318,279,29,23,8,20,11],["0161","1210",346,314,49,29,11,18,5],["0162","1260",327,286,38,22,16,23,7],["0163","1066",329,278,52,13,17,11,9],["0164","1163",335,284,65,23,10,19,9],["0165","1236",350,311,34,31,15,17,10],["0171","1074",277,248,43,23,7,8,11],["0172","1520",340,296,60,20,15,9,26],["0175","1090",332,281,49,22,19,15,16],["0176","1090",326,277,53,24,12,20,15],["0178","1090",328,294,45,35,12,11,9],["0179","1309",165,147,30,13,15,2,5],["0180","1023",337,295,50,33,15,15,13],["0181","1252",300,266,35,22,12,10,5],["0183","1163",344,291,59,21,9,10,15],["0184","1694",219,183,38,9,16,5,1],["0186","1309",165,149,23,8,30,2,1],["0187","1236",336,286,34,28,7,10,12],["0188","1694",223,187,43,15,8,5,5],["0189","1082",326,282,50,25,12,17,15],["0190","1430",336,285,60,20,23,16,3],["0191","1457",321,282,57,14,20,12,5],["0192","1465",338,283,49,33,26,6,5],["0193","1473",277,242,45,21,13,7,4],["0194","1090",325,291,48,23,15,11,10],["0196","1260",325,290,43,28,8,17,2],["0197","1163",302,262,50,12,13,13,14],["0198","1430",328,291,52,23,25,11,7],["0199","1082",321,265,54,11,14,10,13],["0200","1210",336,284,42,17,8,14,7],["0201","1260",325,285,46,19,4,11,9],["0202","1236",348,313,38,34,24,18,21],["0203","1481",321,277,75,15,8,8,12],["0204","1465",323,278,54,33,26,8,5],["0205","1694",223,198,35,9,28,7,4],["0206","1430",339,295,47,29,39,11,6],["0209","1457",305,275,44,22,32,8,6],["0210","1228",331,282,29,27,24,9,6],["0212","1090",336,282,52,19,14,10,7],["0213","1210",331,279,43,22,20,19,6],["0214","1317",348,303,42,15,39,27,9],["0215","1350",172,143,23,13,4,0,13],["0217","1066",335,280,57,14,23,17,14],["0218","1082",333,281,43,18,17,19,14],["0219","1317",338,301,50,21,30,22,8],["0220","1244",345,302,35,30,12,21,13],["0221","1430",343,299,49,21,38,12,7],["0224","1449",325,281,41,32,18,13,12],["0225","1210",334,294,48,25,12,17,8],["0227","1317",339,305,43,22,41,17,5],["0228","1074",257,226,36,16,6,13,8],["0229","1465",315,277,47,40,33,5,3],["0232","1309",166,141,26,5,25,6,2],["0233","1430",328,278,45,21,24,12,7],["0237","1317",340,302,50,24,39,20,4],["0240","1317",338,308,44,19,43,18,6],["0241","1449",327,280,38,29,14,11,11],["0242","1040",284,245,48,14,14,9,10],["0244","1520",338,300,52,24,15,12,19],["0245","1023",336,290,52,20,13,18,7],["0246","1198",334,300,52,33,12,11,8],["0247","1228",343,303,35,34,24,10,10],["0248","1317",343,312,41,21,41,23,6],["0249","1430",336,291,53,30,28,7,2],["0250","1457",316,270,47,18,16,6,7],["0251","1198",337,291,47,30,16,13,7],["0252","1465",312,273,49,40,39,7,4],["0253","1473",262,229,29,18,19,6,3],["0254","1430",335,289,51,16,21,8,10],["0257","1228",335,285,33,27,19,16,4],["0258","1090",321,290,55,27,16,18,14],["0259","1694",221,194,37,10,16,9,3],["0260","1023",333,300,43,36,9,15,7],["0261","1481",330,284,72,14,11,18,8],["0262","1465",329,283,54,39,40,10,5],["0263","1430",318,269,63,20,27,10,2],["0266","1457",303,257,43,25,27,9,4],["0269","1554",321,270,52,22,24,10,5],["0270","1252",292,248,31,27,22,13,5],["0271","1082",331,269,50,19,17,11,14],["0272","1465",307,263,54,37,32,2,4],["0273","1562",313,277,31,15,19,10,4],["0274","1570",281,233,46,22,21,12,12],["0277","1635",307,255,45,15,17,13,11],["0278","1082",318,271,43,14,16,13,18],["0279","1155",333,292,52,21,7,24,19],["0280","1597",303,247,52,20,18,17,5],["0281","1570",303,260,48,18,18,9,4],["0282","1252",280,237,32,16,9,12,9],["0283","1600",308,280,36,21,9,16,4],["0284","1198",328,277,34,28,12,23,12],["0286","1082",322,271,46,19,11,11,13],["0287","1570",280,243,32,17,12,6,11],["0288","1430",307,245,44,14,18,15,3],["0290","1252",286,257,33,27,12,7,4],["0291","1597",281,237,48,16,12,4,3],["0292","1082",311,275,40,14,21,9,8],["0293","1481",330,293,60,24,7,11,15],["0294","1635",305,257,29,19,29,8,4],["0295","1554",308,264,49,21,18,8,2],["0296","1473",288,249,39,13,16,11,7],["0297","1465",294,248,43,39,22,4,2],["0298","1597",296,256,52,21,22,5,7],["0299","1082",310,253,37,11,13,19,9],["0300","1600",301,262,26,17,16,21,13],["0301","1570",285,238,34,25,14,18,8],["0302","1562",297,238,30,7,15,10,3],["0303","1570",277,233,38,16,7,13,4],["0304","1082",296,248,41,14,13,16,4],["0305","1627",318,269,52,14,5,16,3],["0306","1619",314,274,42,19,19,21,2],["0307","1635",313,277,42,11,13,21,7],["0309","1643",333,298,27,38,66,5,0],["0311","1597",282,229,47,17,15,11,2],["0312","1430",307,255,48,12,28,17,6],["0313","1481",305,265,56,10,6,23,10],["0314","1600",289,256,14,16,20,26,4],["0315","1619",313,265,38,15,10,19,3],["0316","1210",330,279,34,16,11,31,6],["0317","1651",310,260,29,15,18,10,11],["0318","1457",292,262,40,21,19,13,7],["0319","1554",306,257,64,17,24,10,5],["0320","1430",335,279,46,15,21,20,8],["0321","1660",308,269,40,12,37,13,1],["0322","1465",315,263,54,31,30,12,5],["0323","1236",327,283,31,24,10,34,13],["0324","1597",301,253,44,27,9,18,10],["0325","1210",330,273,38,13,12,57,4],["0327","1627",315,263,40,24,15,23,5],["0328","1562",288,258,20,10,17,14,12],["0329","1430",326,283,26,16,23,34,1],["0330","1066",328,282,58,14,11,25,8],["0331","1082",315,268,42,16,9,39,12],["0332","1074",270,236,56,21,4,17,6],["0333","1260",295,261,26,16,6,35,8],["0334","1481",332,283,46,31,9,26,8],["0336","1651",316,271,21,21,21,16,15],["0337","1244",335,290,33,21,10,26,7],["0338","1252",273,237,36,20,5,17,3],["0339","1678",319,283,48,14,2,14,4],["0340","1635",308,261,33,19,17,20,5],["0341","1619",300,246,39,15,15,11,1],["0343","1686",128,119,2,19,25,2,0],["0345","1473",278,249,41,32,19,9,5],["0347","1651",300,266,26,13,16,8,7],["0349","1600",210,184,10,13,8,12,2],["0350","1597",287,249,54,26,27,5,4],["0351","1678",226,200,26,8,4,10,6],["0352","1660",146,133,12,5,19,11,3],["0353","1651",81,76,4,3,6,3,2]],"locais":{"1023":["Escola Municipal Arthur Carlos de Melo","Vila Luiz Freire II","Av. 27 de Setembro, 716",-7.843254,-34.907406],"1040":["Creche Tia Jane","Centro","Rua Severino Uchoa Cavalcante, 98",-7.831877,-34.909047],"1066":["Escola Estadual João Pessoa Guerra","Centro","Rua Alfredo Bandeira de Melo, S/N",-7.826898,-34.914803],"1074":["Escola Municipal Vereador Jaime Bezerra Lins","Vila Luiz Freire II","Rua da Bondade, 64",-7.821286,-34.913238],"1082":["EREM Santos Cosme e Damião","Centro","Rua Joaquim Nabuco, 224",-7.830264,-34.908855],"1090":["Escola Professor Aderbal Jurema","Centro","Rua Jose Lacerda Leite, 52",-7.826398,-34.911483],"1155":["Escola Rotary Adolfo Brol","Vila Saramandaia","Rua Mestre Stélio Marinho Falcão, 366",-7.837721,-34.909572],"1163":["Escola Desembargador Carlos Xavier Paes Barreto","Vila Saramandaia","Loteamento Redenção, S/N",-7.839023,-34.910189],"1198":["Escola Soldado Mariano Marcos Cavalcanti","Cruz de Rebouças","Av. Santa Catarina, 848",-7.873451,-34.912196],"1210":["Escola Brasilino José de Carvalho","Cruz de Rebouças","Rua Camutanga, 120 - Lot. Bonfim",-7.874353,-34.912084],"1228":["Escola Barão de Vera Cruz","Cruz de Rebouças","Rua Jacob Pinto de Freitas, S/N",-7.868412,-34.903773],"1236":["Escola Dalila de Melo Fonseca","Cruz de Rebouças","Rua João Francisco Ribeiro, 1223",-7.871824,-34.905321],"1244":["Escola Eurico Pfisterer","Cruz de Rebouças","Rua Jacob Pinto de Freitas, 26",-7.8686,-34.904424],"1252":["Escola Municipal Vereador José Francisco Ferreira","Cruz de Rebouças","Rua Antônio Novelino, S/N",-7.864997,-34.906943],"1260":["Creche Tia Emocy","Cruz de Rebouças","Av. Barão de Vera Cruz , S/N",-7.87513,-34.906137],"1309":["Escola Nova Cruz Ensino 1º Grau","Nova Cruz I","Rua Anita de Melo Fonseca, S/N",-7.847442,-34.843123],"1317":["Escola Municipal Antônio de Pádua Caraciolo","Cruz de Rebouças","Rua Verdejante, 200 - Lot. Santo Antônio",-7.856893,-34.910475],"1333":["Grupo Escolar Municipal Ana Caldas Brandão","Cueiras","Rua São João Batista, S/N",-7.873819,-34.860814],"1350":["Escola Irineu Marques da Fonseca","Três Ladeiras","Vila de Três Ladeiras, S/N",-7.763469,-35.029779],"1368":["Escola Evangelina Delgado de Albuquerque","Três Ladeiras","Vila de Três Ladeiras, S/N",-7.757987,-35.035598],"1430":["Escola Professora Cecília Maria Vaz Curado Ribeiro","Lot. Agamenon Magalhães","Av. Henrique Dias, 334",-7.829687,-34.920721],"1449":["Grupo Escolar Municipal Ecilda Ramos de Souza","Cruz de Rebouças","Rua João Paes da Silva, 592",-7.864323,-34.910529],"1457":["Escola João Leite de Nogueira Paz","Cruz de Rebouças","Rua Maria Elizabete Soares de Lira, 490",-7.880622,-34.907007],"1465":["Escola Municipal Maria Djanira Lacerda Leite","Vila Rural","Rua Belo Horizonte, 308",-7.809008,-34.926011],"1473":["Escola Municipal José Luiz de Barros Sampaio","Pirajui","Pe14 - Estrada de Nova Cruz, S/N",-7.847221,-34.880679],"1481":["Escola Professor José Eronides","Tabatinga","Estrada de Tabatinga, S/N",-7.806593,-34.917168],"1520":["Escola João de Queiroz Galvão","Beira Mar I","Av Edgar Lins, 400",-7.828226,-34.905005],"1554":["Escola Nelson de Oliveira Galvão","Cruz de Rebouças","Rua São Paulo, S/N",-7.874038,-34.91644],"1562":["Escola São Luis","Inhaman","Sitio Iaman",-7.884502,-34.894843],"1570":["Escola Pastor Isaias","Centro","Rua Jose Lacerda Leite, 338",-7.827007,-34.914223],"1597":["Escola Jose Jorge Farias Sales","Centro","Rua Maria Correia de Moraes, 18",-7.839448,-34.901683],"1600":["Escola Municipal Flávio Pessoa Guerra","Encanto Igarassu","Rua Fera Ferida, S/N",-7.856235,-34.904731],"1619":["Escola Nossa Senhora da Conceição","Lot. Agamenon Magalhães","Rua da Lavadeira",-7.832261,-34.9176],"1627":["Escola José Ermirio de Moraes","Lot. Ana Albuquerque","Rua Santa Barbara, S/N",-7.846448,-34.913569],"1635":["Escola Albin Sthali","Cruz de Rebouças","Av Rubina, S/N",-7.879738,-34.908159],"1643":["Escola João Santos Filho","Nova Cruz II","Rua João Santos Filho",-7.844747,-34.852848],"1651":["Escola Miguel Gomes de Lima","Lot. Agamenon Magalhães","Estrada da Pitanga",-7.840972,-34.927353],"1660":["Escola Maria do Carmo do Rego Monteiro","Centro","Rua Novo Igarassu",-7.826121,-34.919005],"1678":["Escola São Marcos","Sitio dos Marcos","Rua Mirandopólis",-7.81852,-34.904682],"1686":["Escola Eduardo Vieira de Carvalho","Tabuleiro de Monjope","Estrada de Monjope S/N",-7.855105,-34.94996],"1694":["CEI Fernando Henrique Lucena","Beira Mar II","Rua Jardim Tocandira",-7.833173,-34.900269]},"top10":[["5500","Guilherme Uchoa Junior","PSD",10625],["1111","Lula da Fonte","PP",5130],["2055","Ricardo Teobaldo","PODE",4019],["5050","Jones Manoel","PSOL",3335],["2020","Marcelo Gouveia","PODE",2981],["1122","Clarissa Tércio","PP",2497],["4040","Pedro Campos","PSB",1993],["5555","Daniel Coelho","PSD",1978],["2222","Anderson Ferreira","PL",1852],["4333","Clodoaldo Magalhães","PV",1845]]};
+const CANDS = [
+  {key:'gu', i:4, name:'Guilherme Uchoa Junior', short:'Guilherme Uchoa Jr.', party:'PSD', num:'5500', color:'var(--c1)', pe:98569, sit:'Eleito', rankMun:1},
+  {key:'lf', i:5, name:'Lula da Fonte', short:'Lula da Fonte', party:'PP', num:'1111', color:'var(--c2)', pe:147913, sit:'Eleito', rankMun:2},
+  {key:'rt', i:6, name:'Ricardo Teobaldo', short:'Ricardo Teobaldo', party:'PODE', num:'2055', color:'var(--c3)', pe:59951, sit:'Eleito', rankMun:3},
+  {key:'jm', i:7, name:'Jones Manoel', short:'Jones Manoel', party:'PSOL', num:'5050', color:'var(--c4)', pe:249077, sit:'Eleito', rankMun:4},
+  {key:'dc', i:8, name:'Daniel Coelho', short:'Daniel Coelho', party:'PSD', num:'5555', color:'var(--c5)', pe:59976, sit:'Suplente', rankMun:8}
+];
+const TIE = {key:'emp', name:'Empate', short:'Empate', color:'var(--tie)'};
+const nf = new Intl.NumberFormat('pt-BR');
+const pf = v => (v*100).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}) + '%';
+const pf1 = v => (v*100).toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1}) + '%';
+const $ = s => document.querySelector(s);
+const el = (tag, attrs={}, ...kids) => { const e = document.createElement(tag); for (const [k,v] of Object.entries(attrs)) { if (k==='class') e.className=v; else if (k==='text') e.textContent=v; else e.setAttribute(k,v); } for (const c of kids) if (c!=null) e.append(c); return e; };
+const SVGNS='http://www.w3.org/2000/svg';
+const sv = (tag, attrs={}) => { const e = document.createElementNS(SVGNS, tag); for (const [k,v] of Object.entries(attrs)) { if (k==='text') e.textContent=v; else e.setAttribute(k,v); } return e; };
+const dot = (color, size=9) => { const i = el('i'); i.style.cssText = `background:${color};width:${size}px;height:${size}px;border-radius:50%;display:inline-block;flex:none`; return i; };
+
+// ---- dados
+const SEC = DATA.secoes.map(r => { const o = {sec:r[0], loc:r[1], comp:r[2], val:r[3]}; for (const c of CANDS) o[c.key] = r[c.i]; return o; });
+const LOC = {};
+for (const [code, v] of Object.entries(DATA.locais)) LOC[code] = {code, name:v[0], bairro:v[1], end:v[2], lat:v[3], lon:v[4], n:0, comp:0, val:0, ...Object.fromEntries(CANDS.map(c=>[c.key,0]))};
+for (const s of SEC){ const l = LOC[s.loc]; l.n++; l.comp += s.comp; l.val += s.val; for (const c of CANDS) l[c.key] += s[c.key]; s.locName = l.name; s.bairro = l.bairro; }
+const BAI = {};
+for (const l of Object.values(LOC)){ const b = BAI[l.bairro] ||= {name:l.bairro, locs:0, n:0, comp:0, val:0, ...Object.fromEntries(CANDS.map(c=>[c.key,0]))}; b.locs++; b.n += l.n; b.comp += l.comp; b.val += l.val; for (const c of CANDS) b[c.key] += l[c.key]; }
+const TOT = SEC.reduce((a,s) => { a.comp += s.comp; a.val += s.val; for (const c of CANDS) a[c.key] += s[c.key]; return a; }, {comp:0, val:0, ...Object.fromEntries(CANDS.map(c=>[c.key,0]))});
+function leader(o){ const mx = Math.max(...CANDS.map(c=>o[c.key])); const w = CANDS.filter(c=>o[c.key]===mx); return w.length===1 ? w[0] : TIE; }
+function rankIn(o, key){ const sorted = [...CANDS].sort((a,b)=>o[b.key]-o[a.key]); return sorted.findIndex(c=>c.key===key)+1; }
+
+// ---- estado
+const VIEWS = ['resumo','mapa','bairros','locais','secoes'];
+const state = {c:'gu', view:'resumo', mapView:'urb', mapSel:'', lSort:'v', lBairro:'', sLocal:'', sQ:'', openL:'', openS:'', openB:''};
+try { const s = JSON.parse(localStorage.getItem('fed-igr')||'{}'); if (CANDS.some(c=>c.key===s.c)) state.c = s.c; if (VIEWS.includes(s.view)) state.view = s.view; } catch(e){}
+const h = (location.hash||'').replace('#',''); if (VIEWS.includes(h)) state.view = h;
+function save(){ try { localStorage.setItem('fed-igr', JSON.stringify({c:state.c, view:state.view})); } catch(e){} }
+const C = () => CANDS.find(c=>c.key===state.c);
+
+// ---- componentes
+function miniRows(o){
+  const box = el('div',{class:'mini'});
+  const sorted = [...CANDS].sort((a,b)=>o[b.key]-o[a.key]);
+  for (const c of sorted){
+    const r = el('div',{class:'mrow' + (c.key===state.c ? ' on' : '')});
+    r.append(el('span',{class:'n'}, dot(c.color), document.createTextNode(c.short)), el('span',{class:'v', text:nf.format(o[c.key])}), el('span',{class:'p', text:pf(o[c.key]/o.val)}));
+    box.append(r);
+  }
+  return box;
+}
+function leadChip(o){ const L = leader(o); return el('span',{class:'lead-chip'}, dot(L.color,8), document.createTextNode(L.key==='emp' ? 'Empate entre os cinco' : `Liderou: ${L.short}`)); }
+
+// ---- topo
+function renderChips(){
+  const box = $('#chips'); box.replaceChildren();
+  for (const c of CANDS){
+    const b = el('button',{class:'chip-c', type:'button', 'aria-pressed':String(c.key===state.c)});
+    const d = el('span',{class:'d'}); d.style.background = c.color;
+    b.append(d, document.createTextNode(c.short));
+    b.addEventListener('click', () => { state.c = c.key; state.mapSel=''; save(); renderAll(); b.scrollIntoView({inline:'nearest', block:'nearest'}); });
+    box.append(b);
+  }
+}
+
+// ---- resumo
+function renderHero(){
+  const c = C(), box = $('#hero'); box.replaceChildren();
+  const d = el('span',{class:'d'}); d.style.background = c.color; d.style.cssText += ';width:14px;height:14px;border-radius:50%';
+  box.append(el('div',{class:'who'}, d, el('span',{class:'name', text:c.name}), el('span',{class:'party', text:`${c.party} · ${c.num}`})));
+  const big = el('div',{class:'big'}); big.append(document.createTextNode(nf.format(TOT[c.key])), el('small',{text:`votos em Igarassu`}));
+  box.append(big);
+  const st = el('div',{style:'display:flex;gap:8px;flex-wrap:wrap;align-items:center'});
+  st.append(el('span',{class:'pill', text:`${c.rankMun}º mais votado no município`}), el('span',{class:'pill', text:`${c.sit} em PE`}));
+  box.append(st);
+  const facts = el('div',{class:'facts'});
+  const lead = SEC.filter(s => leader(s).key===c.key).length;
+  facts.append(
+    el('div',{class:'fact'}, el('b',{text:pf(TOT[c.key]/TOT.val)}), el('span',{text:'dos votos válidos no município'})),
+    el('div',{class:'fact'}, el('b',{text:nf.format(c.pe)}), el('span',{text:`votos em PE · ${pf1(TOT[c.key]/c.pe)} vieram daqui`})),
+    el('div',{class:'fact'}, el('b',{text:String(lead)}), el('span',{text:'seções em que foi o mais votado dos cinco'}))
+  );
+  box.append(facts);
+}
+function renderRank(){
+  const box = $('#rank'); box.replaceChildren();
+  const max = Math.max(...CANDS.map(c=>TOT[c.key]));
+  for (const c of [...CANDS].sort((a,b)=>TOT[b.key]-TOT[a.key])){
+    const b = el('button',{class:'rrow' + (c.key===state.c ? '' : ' dim'), type:'button', 'aria-label':`${c.name}: ${nf.format(TOT[c.key])} votos`});
+    b.append(el('span',{class:'nm'}, dot(c.color,10), document.createTextNode(c.short), el('em',{text:`${c.party} · ${c.sit}`})));
+    const v = el('span',{class:'val', text:nf.format(TOT[c.key])}); v.append(el('small',{text:pf(TOT[c.key]/TOT.val)})); b.append(v);
+    const tr = el('span',{class:'track'}); const f = el('span'); f.style.width = (100*TOT[c.key]/max)+'%'; f.style.background = c.color; tr.append(f); b.append(tr);
+    b.addEventListener('click', () => { state.c = c.key; save(); renderAll(); });
+    box.append(b);
+  }
+  const ol = $('#top10'); ol.replaceChildren();
+  DATA.top10.forEach(t => { const li = el('li',{class: CANDS.some(c=>c.num===t[0]) ? 'sel' : ''}); li.append(document.createTextNode(`${t[1]} (${t[2]})`), el('span',{text:nf.format(t[3])})); ol.append(li); });
+}
+function renderStrip(host, legend, items){
+  const H = $(host), L = $(legend); H.replaceChildren(); L.replaceChildren();
+  const counts = new Map(); for (const it of items){ const k = leader(it).key; counts.set(k,(counts.get(k)||0)+1); }
+  const order = [...CANDS, TIE].filter(c=>counts.get(c.key)).sort((a,b)=>counts.get(b.key)-counts.get(a.key));
+  for (const c of order){ const n = counts.get(c.key); const s = el('span',{title:`${c.short}: ${n}`}); s.style.flex = `${n} 0 0`; s.style.background = c.color; H.append(s); const l = el('span'); const i = el('i'); i.style.background = c.color; l.append(i, el('b',{text:String(n)}), document.createTextNode(' ' + (c.key==='emp' ? 'empates' : c.short))); L.append(l); }
+}
+
+// ---- mapa
+const URB = {lonMin:-34.933, lonMax:-34.891, latMin:-7.889, latMax:-7.802};
+function renderMap(){
+  $('#vUrb').setAttribute('aria-pressed', String(state.mapView==='urb')); $('#vAll').setAttribute('aria-pressed', String(state.mapView==='all'));
+  const host = $('#map'); host.replaceChildren();
+  const W = Math.max(280, host.clientWidth || 340);
+  const H = state.mapView==='urb' ? Math.round(Math.min(640, Math.max(440, W*1.25))) : Math.round(W*0.95);
+  const locs = Object.values(LOC); const c = C();
+  const b = state.mapView==='all' ? {lonMin:Math.min(...locs.map(l=>l.lon)), lonMax:Math.max(...locs.map(l=>l.lon)), latMin:Math.min(...locs.map(l=>l.lat)), latMax:Math.max(...locs.map(l=>l.lat))} : URB;
+  const k = Math.cos(-7.84*Math.PI/180), pad = 26;
+  const sc = Math.min((W-2*pad)/((b.lonMax-b.lonMin)*k), (H-2*pad)/(b.latMax-b.latMin));
+  const ox = (W - (b.lonMax-b.lonMin)*k*sc)/2, oy = (H - (b.latMax-b.latMin)*sc)/2;
+  const px = lon => ox + (lon-b.lonMin)*k*sc, py = lat => oy + (b.latMax-lat)*sc;
+  const svg = sv('svg',{viewBox:`0 0 ${W} ${H}`, width:W, height:H, role:'group', 'aria-label':'Mapa das escolas'});
+  svg.append(sv('rect',{x:0,y:0,width:W,height:H,rx:10,fill:'var(--surface-2)'}));
+  const km = sc/111.32, sx=12, sy=H-14;
+  svg.append(sv('line',{x1:sx,y1:sy,x2:sx+km,y2:sy,stroke:'var(--muted)','stroke-width':1.5}), sv('text',{x:sx+km+6,y:sy+4,'font-size':11,fill:'var(--muted)',text:'1 km'}), sv('text',{x:W-12,y:20,'font-size':12,'font-weight':700,fill:'var(--muted)','text-anchor':'end',text:'N ↑'}));
+  const maxV = Math.max(...locs.map(l=>l[c.key])) || 1;
+  const rMax = state.mapView==='urb' ? Math.min(24, W/15) : Math.min(18, W/20);
+  const rOf = l => Math.max(3.5, Math.sqrt(l[c.key]/maxV)*rMax);
+  const vis = l => { const x=px(l.lon), y=py(l.lat); return x>-10 && x<W+10 && y>-10 && y<H+10; };
+  const g = sv('g');
+  const shown = locs.filter(vis).sort((a,b)=>rOf(b)-rOf(a));
+  for (const l of shown){
+    const x = px(l.lon), y = py(l.lat), r = rOf(l);
+    const grp = sv('g',{class:'bubble' + (state.mapSel===l.code ? ' sel' : ''), tabindex:'0', role:'button', 'aria-label':`${l.name}: ${nf.format(l[c.key])} votos de ${c.name}`});
+    grp.append(sv('circle',{cx:x,cy:y,r:Math.max(r+8,16),fill:'transparent'}));
+    const ring = sv('circle',{class:'ring',cx:x,cy:y,r,stroke:'var(--surface)','stroke-width':2}); ring.style.fill = c.color; grp.append(ring);
+    const pick = () => { state.mapSel = l.code; renderMap(); renderMapDetail(); };
+    grp.addEventListener('click', pick);
+    grp.addEventListener('keydown', e => { if (e.key==='Enter'||e.key===' '){ e.preventDefault(); pick(); } });
+    g.append(grp);
+  }
+  // rótulos de bairro com halo, sem colisão
+  const lg = sv('g',{'pointer-events':'none','aria-hidden':'true'}); const placed = [];
+  for (const bb of Object.values(BAI).sort((a,b)=>b.val-a.val)){
+    const ls = locs.filter(l=>l.bairro===bb.name); const x = ls.reduce((a,l)=>a+px(l.lon),0)/ls.length, y = ls.reduce((a,l)=>a+py(l.lat),0)/ls.length;
+    if (x<0||x>W||y<0||y>H) continue;
+    const w = bb.name.length*5.9; let lx = Math.min(Math.max(x, w/2+4), W-w/2-4), ly = y-22; if (ly<14) ly = y+26;
+    const r = {x1:lx-w/2-2,x2:lx+w/2+2,y1:ly-11,y2:ly+3};
+    if (placed.some(p=>!(r.x2<p.x1||r.x1>p.x2||r.y2<p.y1||r.y1>p.y2))) continue; placed.push(r);
+    lg.append(sv('text',{x:lx,y:ly,'text-anchor':'middle','font-size':10.5,'font-weight':600,fill:'var(--ink-2)',stroke:'var(--surface-2)','stroke-width':3,'paint-order':'stroke','stroke-linejoin':'round',text:bb.name}));
+  }
+  svg.append(g, lg); host.append(svg);
+  const off = locs.length - shown.length;
+  $('#mapSub').textContent = `${c.short}` + (off ? ` · ${off} escolas rurais fora do quadro` : '');
+}
+function renderMapDetail(){
+  const box = $('#mapDetail'); box.replaceChildren();
+  if (!state.mapSel){ box.append(el('p',{class:'sub', text:'Toque em um círculo para ver os números daquela escola.'})); return; }
+  const l = LOC[state.mapSel];
+  const hd = el('div',{class:'hd'}); hd.append(el('div',{}, el('b',{text:l.name}), el('div',{class:'sub', text:`${l.bairro} · ${l.n} ${l.n>1?'seções':'seção'} · ${nf.format(l.comp)} eleitores presentes`})));
+  box.append(hd, miniRows(l), leadChip(l));
+  const go = el('button',{class:'btn', type:'button', text:'Ver as seções desta escola'});
+  go.addEventListener('click', () => { state.sLocal = l.code; $('#sLocal').value = l.code; setView('secoes'); });
+  box.append(go);
+}
+
+// ---- bairros
+function renderBairros(){
+  const c = C(), box = $('#bList'); box.replaceChildren();
+  const rows = Object.values(BAI).sort((a,b)=>b[c.key]/b.val - a[c.key]/a.val);
+  const max = Math.max(...rows.map(b=>b[c.key]/b.val));
+  $('#bSub').textContent = `${c.short} · % dos votos válidos em cada bairro, do maior para o menor`;
+  for (const b of rows){
+    const it = el('div',{class:'item'});
+    const bt = el('button',{type:'button', 'aria-expanded':String(state.openB===b.name)});
+    const rk = rankIn(b, c.key);
+    bt.append(el('span',{class:'t', text:b.name}), el('span',{class:'s', text:`${b.locs} ${b.locs>1?'escolas':'escola'} · ${rk}º entre os cinco aqui`}));
+    const r = el('span',{class:'r'}, el('b',{text:pf(b[c.key]/b.val)}), el('span',{text:`${nf.format(b[c.key])} votos`})); bt.append(r);
+    const bar = el('span',{class:'bar'}); const f = el('span'); f.style.width = (100*(b[c.key]/b.val)/max)+'%'; f.style.background = c.color; bar.append(f); bt.append(bar);
+    bt.addEventListener('click', () => { state.openB = state.openB===b.name ? '' : b.name; renderBairros(); });
+    it.append(bt);
+    if (state.openB===b.name){ const body = el('div',{class:'body'}); body.append(miniRows(b), leadChip(b)); const go = el('button',{class:'btn ghost', type:'button', text:'Ver as escolas deste bairro'}); go.addEventListener('click', () => { state.lBairro = b.name; $('#lBairro').value = b.name; setView('locais'); }); body.append(go); it.append(body); }
+    box.append(it);
+  }
+}
+
+// ---- locais
+function renderLocais(){
+  const c = C(), box = $('#lList'); box.replaceChildren();
+  let rows = Object.values(LOC).filter(l => !state.lBairro || l.bairro===state.lBairro);
+  if (state.lSort==='v') rows.sort((a,b)=>b[c.key]-a[c.key]); else if (state.lSort==='p') rows.sort((a,b)=>b[c.key]/b.val-a[c.key]/a.val); else rows.sort((a,b)=>a.name.localeCompare(b.name,'pt-BR'));
+  const max = Math.max(...Object.values(LOC).map(l => state.lSort==='p' ? l[c.key]/l.val : l[c.key]));
+  for (const l of rows){
+    const it = el('div',{class:'item'});
+    const bt = el('button',{type:'button','aria-expanded':String(state.openL===l.code)});
+    bt.append(el('span',{class:'t', text:l.name}), el('span',{class:'s', text:`${l.bairro} · ${l.n} ${l.n>1?'seções':'seção'}`}));
+    bt.append(el('span',{class:'r'}, el('b',{text:nf.format(l[c.key])}), el('span',{text:pf(l[c.key]/l.val)})));
+    const bar = el('span',{class:'bar'}); const f = el('span'); f.style.width = (100*(state.lSort==='p' ? l[c.key]/l.val : l[c.key])/max)+'%'; f.style.background = c.color; bar.append(f); bt.append(bar);
+    bt.addEventListener('click', () => { state.openL = state.openL===l.code ? '' : l.code; renderLocais(); });
+    it.append(bt);
+    if (state.openL===l.code){ const body = el('div',{class:'body'}); body.append(el('p',{class:'sub', text:`${l.end} · ${nf.format(l.comp)} eleitores presentes`}), miniRows(l), leadChip(l)); const go = el('button',{class:'btn', type:'button', text:'Ver as seções desta escola'}); go.addEventListener('click', () => { state.sLocal = l.code; $('#sLocal').value = l.code; setView('secoes'); }); body.append(go); it.append(body); }
+    box.append(it);
+  }
+  if (!rows.length) box.append(el('p',{class:'empty', text:'Nenhuma escola neste filtro.'}));
+}
+
+// ---- seções
+function renderSecoes(){
+  const c = C(), box = $('#sList'); box.replaceChildren();
+  const q = state.sQ; let rows = SEC.filter(s => (!state.sLocal || s.loc===state.sLocal) && (!q || s.sec.includes(q) || s.sec === q.padStart(4,'0')));
+  rows.sort((a,b)=>a.sec.localeCompare(b.sec));
+  const max = Math.max(...SEC.map(s=>s[c.key]));
+  const sum = rows.reduce((a,s)=>{ a.v+=s[c.key]; a.val+=s.val; return a; }, {v:0, val:0});
+  $('#sCount').textContent = rows.length ? `${rows.length} ${rows.length>1?'seções':'seção'} · ${c.short}: ${nf.format(sum.v)} votos (${pf(sum.v/(sum.val||1))})` : '';
+  for (const s of rows){
+    const it = el('div',{class:'item'});
+    const bt = el('button',{type:'button','aria-expanded':String(state.openS===s.sec)});
+    bt.append(el('span',{class:'t', text:`Seção ${s.sec}${s.sec==='0306' ? ' (com a 0354)' : ''}`}), el('span',{class:'s', text:s.locName}));
+    bt.append(el('span',{class:'r'}, el('b',{text:nf.format(s[c.key])}), el('span',{text:pf(s[c.key]/s.val)})));
+    const bar = el('span',{class:'bar'}); const f = el('span'); f.style.width = (100*s[c.key]/max)+'%'; f.style.background = c.color; bar.append(f); bt.append(bar);
+    bt.addEventListener('click', () => { state.openS = state.openS===s.sec ? '' : s.sec; renderSecoes(); });
+    it.append(bt);
+    if (state.openS===s.sec){ const body = el('div',{class:'body'}); body.append(el('p',{class:'sub', text:`${s.bairro} · ${nf.format(s.comp)} eleitores presentes · ${nf.format(s.val)} votos válidos`}), miniRows(s), leadChip(s)); it.append(body); }
+    box.append(it);
+  }
+  if (!rows.length) box.append(el('p',{class:'empty', text:'Nenhuma seção encontrada. Digite só o número, por exemplo 322.'}));
+}
+
+// ---- navegação
+function setView(v){ state.view = v; save(); try { history.replaceState(null,'','#'+v); } catch(e){} renderView(); window.scrollTo({top:0}); }
+function renderView(){
+  for (const v of VIEWS) $('#v-'+v).hidden = v!==state.view;
+  for (const b of document.querySelectorAll('#tabs button')) { if (b.dataset.v===state.view) b.setAttribute('aria-current','page'); else b.removeAttribute('aria-current'); }
+  if (state.view==='mapa'){ renderMap(); renderMapDetail(); }
+  if (state.view==='bairros') renderBairros();
+  if (state.view==='locais') renderLocais();
+  if (state.view==='secoes') renderSecoes();
+}
+for (const b of document.querySelectorAll('#tabs button')) b.addEventListener('click', () => setView(b.dataset.v));
+$('#vUrb').addEventListener('click', () => { state.mapView='urb'; renderMap(); });
+$('#vAll').addEventListener('click', () => { state.mapView='all'; renderMap(); });
+for (const b of Object.values(BAI).sort((a,b)=>a.name.localeCompare(b.name,'pt-BR'))) $('#lBairro').append(el('option',{value:b.name, text:b.name}));
+for (const l of Object.values(LOC).sort((a,b)=>a.name.localeCompare(b.name,'pt-BR'))) $('#sLocal').append(el('option',{value:l.code, text:l.name}));
+$('#lSort').addEventListener('change', e => { state.lSort = e.target.value; renderLocais(); });
+$('#lBairro').addEventListener('change', e => { state.lBairro = e.target.value; renderLocais(); });
+$('#sLocal').addEventListener('change', e => { state.sLocal = e.target.value; state.openS=''; renderSecoes(); });
+$('#sQ').addEventListener('input', e => { state.sQ = e.target.value.replace(/\D/g,''); renderSecoes(); });
+
+function renderAll(){ renderChips(); renderHero(); renderRank(); renderView(); }
+renderStrip('#stripSec','#legSec', SEC);
+renderStrip('#stripLoc','#legLoc', Object.values(LOC));
+renderAll();
+let rt; new ResizeObserver(() => { clearTimeout(rt); rt = setTimeout(() => { if (state.view==='mapa') renderMap(); }, 120); }).observe($('#map'));
+</script>
+</body>
+</html>
